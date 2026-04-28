@@ -1,0 +1,12 @@
+{
+  "timestamp": 1704614800000,
+  "toolName": "run_in_terminal",
+  "toolArgs": {
+    "command": "echo hello",
+    "explanation": "Print hello to stdout"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "hello\n"
+  }
+}

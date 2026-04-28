@@ -1,0 +1,46 @@
+name: Validate Hooks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/hooks/**'
+  pull_request:
+    paths:
+      - '.github/hooks/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .github/hooks
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Validate examples.json
+        run: jq . examples.json > /dev/null
+
+      - name: Check script syntax
+        run: bash -n scripts/*.sh
+
+      - name: Make scripts executable
+        run: chmod +x scripts/*.sh run-hook.sh
+
+      - name: Run all hooks with fixture payloads
+        run: make run-all
+
+      - name: Validate log output is well-formed JSONL
+        run: |
+          for log_file in logs/*.jsonl; do
+            echo "Checking $log_file ..."
+            while IFS= read -r line; do
+              echo "$line" | jq . > /dev/null
+            done < "$log_file"
+          done
+          echo "All log files are valid JSONL."

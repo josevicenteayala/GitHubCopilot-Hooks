@@ -1,0 +1,9 @@
+{
+  "timestamp": 1704615000000,
+  "cwd": "/workspaces/GitHubCopilot-Hooks",
+  "error": {
+    "name": "Error",
+    "message": "Cannot read properties of undefined (reading 'id')",
+    "stack": "Error: Cannot read properties of undefined (reading 'id')\n    at processResponse (/app/index.js:42:10)"
+  }
+}

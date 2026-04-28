@@ -1,0 +1,8 @@
+{
+  "timestamp": 1704614700000,
+  "toolName": "run_in_terminal",
+  "toolArgs": {
+    "command": "echo hello",
+    "explanation": "Print hello to stdout"
+  }
+}
