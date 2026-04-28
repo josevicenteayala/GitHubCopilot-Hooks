@@ -1,0 +1,4 @@
+.github/hooks/logs/*
+!.github/hooks/logs/.gitkeep
+.github/hooks/tmp/*
+!.github/hooks/tmp/.gitkeep
